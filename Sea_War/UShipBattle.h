@@ -105,6 +105,9 @@ int Desposition (int x, int y, TMouseButton Button); //розм≥щенн€ корабл≥в
 int Draw (String key, int x, int y, int n); //малюванн€
 int ShootPlayer (int x, int y, int n);  //вистр≥л гравц€
 int Shoot (int x, int y);  //вистр≥л комп'ютера
+
+int BuildShipsCPU();
+
 };
 class TForm1: public TForm
 {
