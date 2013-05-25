@@ -1,10 +1,10 @@
 1) Student     3  -  0
 2) Student     3  -  0
-3) Student     2  -  0
+3) Student     3  -  0
 4) Student     2  -  0
 5) Student     2  -  0
 6) Student     2  -  0
-7) Student     1  -  0
-8) Student     1  -  0
-9) Student     1  -  0
-10) Student     1  -  0
+7) Student     2  -  0
+8) Student     2  -  0
+9) Student     2  -  0
+10) Student     2  -  0

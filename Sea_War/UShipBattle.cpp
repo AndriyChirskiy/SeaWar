@@ -71,19 +71,17 @@ if(regen) break;
 
 if(! vertical)
 {
-
-   if( (CPU -> ship[i].desp_of_part[j].x+1 == x1 + k  &&
-   CPU -> ship[i].desp_of_part[j].y == y1) ||
-   (CPU -> ship[i].desp_of_part[j].x-1 == x1  &&
-   CPU -> ship[i].desp_of_part[j].y == y1) )
+if (x1 + k >= 10)
    {
    vertical = true;
    regen = true;
    continue;
    }
 
-   if((CPU -> ship[i].desp_of_part[j].x == x1 + k &&
-   CPU -> ship[i].desp_of_part[j].y == y1) || (x1 + k >= 10))
+
+
+   if((CPU -> ship[i].desp_of_part[j].x== x1 + k &&
+   CPU -> ship[i].desp_of_part[j].y == y1))
    {
    vertical = true;
    regen = true;
@@ -104,9 +102,16 @@ if(! vertical)
 
 if(vertical)
 {
+
+if (y1 + k >= 10)
+   {
+   vertical = false;
+   regen = true;
+   continue;
+   }
+
    if((CPU -> ship[i].desp_of_part[j].x == x1 &&
-   CPU -> ship[i].desp_of_part[j].y == y1 + k) ||
-   (y1 + k >= 10))
+   CPU -> ship[i].desp_of_part[j].y == y1 + k) )
    {
    vertical = false;
    regen = true;
@@ -118,7 +123,7 @@ if(vertical)
    (CPU -> ship[i].desp_of_part[j].y - 1 == y1 + k ||
    CPU -> ship[i].desp_of_part[j].y + 1 == y1 + k))
    {
-   vertical = true;
+   vertical = false;
    regen = true;
    continue;
    }
@@ -601,29 +606,30 @@ void __fastcall TForm1::N3Click(TObject *Sender)
 {
 
 
-if (Form1->Timer3->Enabled == true)
+if (Form1->Timer3->Enabled == true || Form1->N7->Default == true)
 {
 Fild1 -> Picture -> LoadFromFile ("foto/net.bmp");
 Fild2 -> Picture -> LoadFromFile ("foto/net.bmp");
-Form1->N11->Default=false;
-Form1->N21->Default=false;
-Form1->N7->Default=true;
 Label1 -> Caption = "Розставте кораблі";
 HE = new EventsForm (Fild1, Fild2);
 Form1->Timer3->Enabled=true;
 }
   else
-if (Form1->N11->Default == false  && Form1->N21->Default == false)
+if (Form1->N11->Default == true)
 {
 
-Fild1 -> Picture -> LoadFromFile ("foto/net.bmp");
-Fild2 -> Picture -> LoadFromFile ("foto/net.bmp");
+Fild1 -> Picture -> LoadFromFile ("foto/net_2.bmp");
+Fild2 -> Picture -> LoadFromFile ("foto/net_2.bmp");
 Label1 -> Caption = "Розставте кораблі";
 HE = new EventsForm (Fild1, Fild2);
 Form1->Timer3->Enabled=true;
 }
   else
-  {
+  
+if (Form1->N21->Default == true)
+{
+Fild1 -> Picture -> LoadFromFile ("foto/net_3.bmp");
+Fild2 -> Picture -> LoadFromFile ("foto/net_3.bmp");
 Label1 -> Caption = "Розставте кораблі";
 HE = new EventsForm (Fild1, Fild2);
 Form1->Timer3->Enabled=true;
