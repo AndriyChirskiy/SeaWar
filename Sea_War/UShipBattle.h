@@ -1,8 +1,10 @@
  // –
 #ifndef UShipBattleH
 #define UShipBattleH
+
  // –
-#include <Classes.hpp>
+
+ #include <Classes.hpp>
 #include <Controls.hpp>
 #include <StdCtrls.hpp>
 #include <Forms.hpp>
@@ -159,6 +161,7 @@ void __fastcall BitBtn3Click (TObject *Sender);
         void __fastcall N12Click(TObject *Sender);
         void __fastcall N13Click(TObject *Sender);
         void __fastcall N14Click(TObject *Sender);
+        void __fastcall Fild1Click(TObject *Sender);
 private:	 // User declarations
 public: // User declarations
 __fastcall TForm1 (TComponent* Owner);

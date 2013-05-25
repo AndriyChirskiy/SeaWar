@@ -71,6 +71,17 @@ if(regen) break;
 
 if(! vertical)
 {
+
+   if( (CPU -> ship[i].desp_of_part[j].x+1 == x1 + k  &&
+   CPU -> ship[i].desp_of_part[j].y == y1) ||
+   (CPU -> ship[i].desp_of_part[j].x-1 == x1  &&
+   CPU -> ship[i].desp_of_part[j].y == y1) )
+   {
+   vertical = true;
+   regen = true;
+   continue;
+   }
+
    if((CPU -> ship[i].desp_of_part[j].x == x1 + k &&
    CPU -> ship[i].desp_of_part[j].y == y1) || (x1 + k >= 10))
    {
@@ -589,20 +600,41 @@ HE = new EventsForm (Fild1, Fild2);
 void __fastcall TForm1::N3Click(TObject *Sender)
 {
 
+
+if (Form1->Timer3->Enabled == true)
+{
+Fild1 -> Picture -> LoadFromFile ("foto/net.bmp");
+Fild2 -> Picture -> LoadFromFile ("foto/net.bmp");
+Form1->N11->Default=false;
+Form1->N21->Default=false;
+Form1->N7->Default=true;
 Label1 -> Caption = "Розставте кораблі";
-//Fild1 -> Picture -> LoadFromFile ("foto/net.bmp");
-//Fild2 -> Picture -> LoadFromFile ("foto/net.bmp");
-
-
 HE = new EventsForm (Fild1, Fild2);
 Form1->Timer3->Enabled=true;
+}
+  else
+if (Form1->N11->Default == false  && Form1->N21->Default == false)
+{
+
+Fild1 -> Picture -> LoadFromFile ("foto/net.bmp");
+Fild2 -> Picture -> LoadFromFile ("foto/net.bmp");
+Label1 -> Caption = "Розставте кораблі";
+HE = new EventsForm (Fild1, Fild2);
+Form1->Timer3->Enabled=true;
+}
+  else
+  {
+Label1 -> Caption = "Розставте кораблі";
+HE = new EventsForm (Fild1, Fild2);
+Form1->Timer3->Enabled=true;
+}
+
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::N5Click(TObject *Sender)
 {
 Form1->Timer2->Enabled=true;
-//Form1->Close();
 }
 //---------------------------------------------------------------------------
 
@@ -792,5 +824,12 @@ Form2->Memo2->Lines->LoadFromFile("rahunok/bals.txt");
 }
 //---------------------------------------------------------------------------
 
+
+
+void __fastcall TForm1::Fild1Click(TObject *Sender)
+{
+if (Form1->Timer3->Enabled == false) ShowMessage("Натисність 'Заново' в меню гри!");
+}
+//---------------------------------------------------------------------------
 
 
