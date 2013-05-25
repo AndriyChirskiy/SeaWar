@@ -123,7 +123,7 @@ if (y1 + k >= 10)
    (CPU -> ship[i].desp_of_part[j].y - 1 == y1 + k ||
    CPU -> ship[i].desp_of_part[j].y + 1 == y1 + k))
    {
-   vertical = false;
+   vertical = true;
    regen = true;
    continue;
    }
@@ -838,4 +838,18 @@ if (Form1->Timer3->Enabled == false) ShowMessage("Натисність 'Заново' в меню гри
 }
 //---------------------------------------------------------------------------
 
+
+void __fastcall TForm1::N16Click(TObject *Sender)
+{
+for (int i=0; i<10; i++)
+{
+Form2->Memo2->Lines->Strings[i]="0";
+Form2->Memo1->Lines->Strings[i]=(IntToStr(i+1)+") none   0  -  0");
+}
+
+Form2->Memo2->Lines->SaveToFile("rahunok/bals.txt");
+Form2->Memo1->Lines->SaveToFile("rahunok/rahunok.txt");
+
+}
+//---------------------------------------------------------------------------
 

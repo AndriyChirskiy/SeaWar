@@ -1,6 +1,6 @@
 object Form2: TForm2
-  Left = 544
-  Top = 203
+  Left = 490
+  Top = 250
   AutoSize = True
   BorderStyle = bsToolWindow
   Caption = 'Form2'
@@ -35,8 +35,15 @@ object Form2: TForm2
     Lines.Strings = (
       ''
       ''
+      ''
+      ''
+      ''
+      ''
+      ''
+      ''
+      ''
       '')
-    MaxLength = 500
+    MaxLength = 10000
     ParentFont = False
     TabOrder = 0
     Visible = False
@@ -47,6 +54,13 @@ object Form2: TForm2
     Width = 185
     Height = 233
     Lines.Strings = (
+      ''
+      ''
+      ''
+      ''
+      ''
+      ''
+      ''
       ''
       ''
       '')

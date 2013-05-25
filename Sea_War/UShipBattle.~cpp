@@ -615,7 +615,7 @@ HE = new EventsForm (Fild1, Fild2);
 Form1->Timer3->Enabled=true;
 }
   else
-if (Form1->N11->Default == true  && Form1->N21->Default == false)
+if (Form1->N11->Default == true)
 {
 
 Fild1 -> Picture -> LoadFromFile ("foto/net_2.bmp");

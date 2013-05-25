@@ -142,6 +142,8 @@ TImage *Fild2;
         TLabel *Label7;
         TLabel *Label8;
         TMenuItem *N14;
+        TMenuItem *N15;
+        TMenuItem *N16;
 void __fastcall Fild2MouseDown (TObject *Sender,
 TMouseButton Button, TShiftState Shift, int X, int Y);
 void __fastcall Fild1MouseDown (TObject *Sender,
@@ -162,6 +164,7 @@ void __fastcall BitBtn3Click (TObject *Sender);
         void __fastcall N13Click(TObject *Sender);
         void __fastcall N14Click(TObject *Sender);
         void __fastcall Fild1Click(TObject *Sender);
+        void __fastcall N16Click(TObject *Sender);
 private:	 // User declarations
 public: // User declarations
 __fastcall TForm1 (TComponent* Owner);
