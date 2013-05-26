@@ -54,83 +54,62 @@ int x1, y1, k, i, j;
 bool vertical = false, regen;
 
 do {
-
 randomize();
 x1 = rand()% 10;
 y1 = rand()% 10;
 regen = false;
-
 for (k = 0; k < col_deck; k++)
-   for (i = 0; i < col_ship; i++)
-      for (j = 0; j < CPU -> ship[i].col_deck; j++)
-      {
+for (i = 0; i < col_ship; i++)
+for (j = 0; j < CPU -> ship[i].col_deck; j++)
+{
 
 if(regen) break;
-
 if(! vertical)
 {
-if (x1 + k >= 10)
-   {
-   vertical = true;
-   regen = true;
-   continue;
-   }
 
 
+if((CPU -> ship[i].desp_of_part[j].x == x1 + k &&
+CPU -> ship[i].desp_of_part[j].y == y1) || (x1 + k >= 10))
+{
+vertical = true;
+regen = true;
+continue;
+}
 
-   if((CPU -> ship[i].desp_of_part[j].x== x1 + k &&
-   CPU -> ship[i].desp_of_part[j].y == y1))
-   {
-   vertical = true;
-   regen = true;
-   continue;
-   }
-
-   if((CPU -> ship[i].desp_of_part[j].x - 1 == x1 + k ||
-   CPU -> ship[i].desp_of_part[j].x + 1 == x1 + k) &&
-   (CPU -> ship[i].desp_of_part[j].y - 1 == y1 ||
-   CPU -> ship[i].desp_of_part[j].y + 1 == y1))
-   {
-   vertical = true;
-   regen = true;
-   continue;
-   }
+if((CPU -> ship[i].desp_of_part[j].x - 1 == x1 + k ||
+CPU -> ship[i].desp_of_part[j].x + 1 == x1 + k) &&
+(CPU -> ship[i].desp_of_part[j].y - 1 == y1 ||
+CPU -> ship[i].desp_of_part[j].y + 1 == y1))
+{
+vertical = true;
+regen = true;
+continue;
+}
 }
 
 
 if(vertical)
 {
-
-if (y1 + k >= 10)
-   {
-   vertical = false;
-   regen = true;
-   continue;
-   }
-
-   if((CPU -> ship[i].desp_of_part[j].x == x1 &&
-   CPU -> ship[i].desp_of_part[j].y == y1 + k) )
-   {
-   vertical = false;
-   regen = true;
-   continue;
-   }
-
-   if ( (CPU -> ship[i].desp_of_part[j].x - 1 == x1 ||
-   CPU -> ship[i].desp_of_part[j].x + 1 == x1) &&
-   (CPU -> ship[i].desp_of_part[j].y - 1 == y1 + k ||
-   CPU -> ship[i].desp_of_part[j].y + 1 == y1 + k))
-   {
-   vertical = true;
-   regen = true;
-   continue;
-   }
+if((CPU -> ship[i].desp_of_part[j].x == x1 &&
+CPU -> ship[i].desp_of_part[j].y == y1 + k) ||
+(y1 + k >= 10))
+{
+vertical = false;
+regen = true;
+continue;
 }
-
-      }
-
+if((CPU -> ship[i].desp_of_part[j].x - 1 == x1 ||
+CPU -> ship[i].desp_of_part[j].x + 1 == x1) &&
+(CPU -> ship[i].desp_of_part[j].y - 1 == y1 + k ||
+CPU -> ship[i].desp_of_part[j].y + 1 == y1 + k))
+{
+vertical = true;
+regen = true;
+continue;
+}
+}
+}
 } while(regen);
-
 if(! vertical)
 for (i = 0; i < col_deck; i++)
 {
@@ -250,8 +229,8 @@ Form1->Label5->Caption=StrToInt(Form1->Label5->Caption)+1;
 
 Form2->Memo2->Lines->Clear();
 Form2->Memo1->Lines->Clear();
-Form2->Memo2->Lines->LoadFromFile("rahunok/bals.txt");
-Form2->Memo1->Lines->LoadFromFile("rahunok/rahunok.txt");
+Form2->Memo2->Lines->LoadFromFile("rahunok/difference.txt");
+Form2->Memo1->Lines->LoadFromFile("rahunok/results.txt");
 int lc=( StrToInt(Form1->Label5->Caption) - StrToInt(Form1->Label6->Caption) );
 
 for (int i=0; i<10; i++)
@@ -267,8 +246,8 @@ if (lc  >  StrToInt(Form2->Memo2->Lines->Strings[i]))
 }
 }
 
-Form2->Memo1->Lines->SaveToFile("rahunok/rahunok.txt");
- Form2->Memo2->Lines->SaveToFile("rahunok/bals.txt");
+Form2->Memo1->Lines->SaveToFile("rahunok/results.txt");
+ Form2->Memo2->Lines->SaveToFile("rahunok/difference.txt");
 }
 
 if (n == 1)
@@ -278,8 +257,8 @@ Form1->Label6->Caption=StrToInt(Form1->Label6->Caption)+1;
 
 Form2->Memo2->Lines->Clear();
 Form2->Memo1->Lines->Clear();
-Form2->Memo2->Lines->LoadFromFile("rahunok/bals.txt");
-Form2->Memo1->Lines->LoadFromFile("rahunok/rahunok.txt");
+Form2->Memo2->Lines->LoadFromFile("rahunok/difference.txt");
+Form2->Memo1->Lines->LoadFromFile("rahunok/results.txt");
 int lc=( StrToInt(Form1->Label5->Caption) - StrToInt(Form1->Label6->Caption) );
 
 for (int i=0; i<10; i++)
@@ -295,8 +274,8 @@ if (lc  >  StrToInt(Form2->Memo2->Lines->Strings[i]))
 }
 }
 
-Form2->Memo1->Lines->SaveToFile("rahunok/rahunok.txt");
- Form2->Memo2->Lines->SaveToFile("rahunok/bals.txt");
+Form2->Memo1->Lines->SaveToFile("rahunok/results.txt");
+ Form2->Memo2->Lines->SaveToFile("rahunok/difference.txt");
 
 }
 game_over = true;
@@ -661,6 +640,7 @@ Form1->Timer2->Enabled=true;
 
 void __fastcall TForm1::N2Click(TObject *Sender)
 {
+
 if (Form1->BitBtn1->Visible==true) ShowMessage("Спочатку підтвердіть ваше ім'я!");
 else
 
@@ -678,6 +658,8 @@ Form1->Label7->Visible=true;
 Form1->Label8->Visible=true;
 Form1->Label1->Visible=true;
 
+Form1->Label9->Visible=false;
+
 Label1 -> Caption = "Розставте кораблі";
 Fild1 -> Picture -> LoadFromFile ("foto/net.bmp");
 Fild2 -> Picture -> LoadFromFile ("foto/net.bmp");
@@ -685,6 +667,8 @@ Form1->Image2->Picture->LoadFromFile("foto/bg_2.jpg");
 
 Form1->Label2->Visible=true;
 Form1->Label3->Visible=true;
+
+
 }
 
 }
@@ -748,6 +732,11 @@ if (Form1->Edit1->Text =="") ShowMessage("Спочатку введіть своє ім'я");
                 Form1->Edit1->Visible=false;
                 Form1->BitBtn1->Visible=false;
                 Form1->Label4->Visible=false;
+
+                Form1->Label9->Caption=Form1->Label2->Caption+
+                ", для початку гри зайдіть в меню і натисніть 'Розпочати' ";
+                Form1->Label9->Visible=true;
+
                 //Form1->Timer3->Enabled=true;
 }
 }
@@ -866,8 +855,8 @@ Form2->Caption="Найкращі результати";
 Form2->Memo1->Visible=true;
 Form2->Image1->Visible=false;
 
-Form2->Memo1->Lines->LoadFromFile("rahunok/rahunok.txt");
-Form2->Memo2->Lines->LoadFromFile("rahunok/bals.txt");
+Form2->Memo1->Lines->LoadFromFile("rahunok/results.txt");
+Form2->Memo2->Lines->LoadFromFile("rahunok/difference.txt");
 }
 
 
@@ -894,8 +883,8 @@ Form2->Memo2->Lines->Strings[i]="0";
 Form2->Memo1->Lines->Strings[i]=(IntToStr(i+1)+") none   0  -  0");
 }
 
-Form2->Memo2->Lines->SaveToFile("rahunok/bals.txt");
-Form2->Memo1->Lines->SaveToFile("rahunok/rahunok.txt");
+Form2->Memo2->Lines->SaveToFile("rahunok/difference.txt");
+Form2->Memo1->Lines->SaveToFile("rahunok/results.txt");
 
 }
 

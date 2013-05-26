@@ -147,6 +147,7 @@ TImage *Fild2;
         TMenuItem *N14;
         TMenuItem *N15;
         TMenuItem *N16;
+        TLabel *Label9;
 void __fastcall Fild2MouseDown (TObject *Sender,
 TMouseButton Button, TShiftState Shift, int X, int Y);
 void __fastcall Fild1MouseDown (TObject *Sender,
